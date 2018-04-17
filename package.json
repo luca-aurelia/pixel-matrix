@@ -1,12 +1,11 @@
 {
   "name": "pixel-matrix",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "An ES nano-module for working with pixel data.",
   "main": "index.js",
   "repository": "https://github.com/noise-machines/pixel-matrix",
   "author": "Thomas Bailey (@noise_machines)",
   "license": "MIT",
   "private": false,
-  "dependencies": {
-  }
+  "dependencies": {}
 }
