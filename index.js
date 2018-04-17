@@ -1,4 +1,4 @@
-import Validations from './Validations'
+import Validations from './Validations.js'
 
 export const COLOR_PROFILES = {
   RGBA: {
@@ -34,7 +34,7 @@ class PixelMatrix {
     )
   }
   static empty (width, height) {
-    return new PixelMatrix(null, width, height, COLOR_PROFILES.RGBA, false)
+    return new PixelMatrix(null, width, height)
   }
   get numberOfChannels () {
     return this.colorProfile.numberOfChannels
@@ -194,7 +194,7 @@ class PixelMatrix {
         x: point.x / this.width,
         y: point.y / this.height
       }
-      return fn(pixel, normalizedPoint, pixelMatrix)
+      return fn(normalizedPoint, normalizedPoint, pixelMatrix)
     })
   }
   reduce (fn, startingValue) {

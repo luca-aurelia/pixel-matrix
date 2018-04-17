@@ -1,5 +1,5 @@
 {
-  "name": "pixel-matrix",
+  "name": "@noise-machines/pixel-matrix",
   "version": "0.0.1",
   "description": "An ES nano-module for working with pixel data.",
   "main": "index.js",

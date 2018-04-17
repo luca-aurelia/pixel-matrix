@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="theme-color" content="#000000">
+    <title>Pixel Matrix Demo</title>
+    <style>
+    body {
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100vw;
+      height: 100vh;
+    }
+    </style>
+  </head>
+  <body>
+    <script type="module">
+      import PixelMatrix from '../index.js'
+
+      // Create canvas
+      const canvas = document.createElement('canvas')
+      canvas.width = 16
+      canvas.height = 16
+      canvas.style.imageRendering = 'pixelated'
+      canvas.style.width = '500px'
+      canvas.style.height = '500px'
+      canvas.style.margin = 'auto'
+      document.body.appendChild(canvas)
+
+      // Initialize an empty 16 x 16 pixel matrix
+      const emptyPixelMatrix = PixelMatrix.fromCanvas(canvas)
+
+      // normalizedMap normalizes point.x and point.y to [0, 1] before passing them to
+      // the callback.
+      const gradient = emptyPixelMatrix.normalizedMap(point => {
+        return {
+          red: point.x * 255,
+          green: 0,
+          blue: point.y * 255,
+          alpha: 255
+        }
+      })
+
+      // Write pixels to canvas
+      gradient.putPixels(canvas)
+      </script>
+    </body>
+    </html>

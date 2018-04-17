@@ -15,6 +15,7 @@ import PixelMatrix from 'pixel-matrix'
 
 // Read pixels from a canvas element
 const canvas = document.querySelector('canvas')
+canvas.style.imageRendering = 'pixelated'
 const pixelMatrix = PixelMatrix.fromCanvas(canvas)
 
 // Convert to greyscale
@@ -36,23 +37,32 @@ greyscalePixelMatrix.putPixels(canvas)
 ## Create a gradient
 
 ```js
-import PixelMatrix, { COLOR_PROFILES } from 'pixel-matrix'
+import PixelMatrix from './index.js'
+
+// Create canvas
+const canvas = document.createElement('canvas')
+canvas.width = 16
+canvas.height = 16
+canvas.style.imageRendering = 'pixelated'
+canvas.style.width = '500px'
+canvas.style.height = '500px'
+canvas.style.margin = 'auto'
+document.body.appendChild(canvas)
 
 // Initialize an empty 16 x 16 pixel matrix
-const width = 16
-const height = 16
-const emptyPixelMatrix = PixelMatrix.empty(width, height)
+const emptyPixelMatrix = PixelMatrix.fromCanvas(canvas)
 
 // normalizedMap normalizes point.x and point.y to [0, 1] before passing them to
 // the callback.
-const gradient = emptyPixelMatrix.normalizedMap(point => ({
-  red: point.x * 255,
-  green: 0,
-  blue: point.y * 255,
-  alpha: 255
-}))
+const gradient = emptyPixelMatrix.normalizedMap(point => {
+  return {
+    red: point.x * 255,
+    green: 0,
+    blue: point.y * 255,
+    alpha: 255
+  }
+})
 
 // Write pixels to canvas
-const canvas = document.querySelector('canvas')
 gradient.putPixels(canvas)
 ```
