@@ -1,12 +1,18 @@
 # Pixel Matrix
 > An eloquent ES6 nano-module for working with pixel data.
 
+# Live Demo
+
+<div class="glitch-embed-wrap" style="height: 420px; width: 100%;">
+  <iframe src="https://glitch.com/embed/#!/embed/pixel-matrix-demo?path=src/index.js&previewSize=45&sidebarCollapsed=true" alt="pixel-matrix-demo on glitch" style="height: 100%; width: 100%; border: 0;"></iframe>
+</div>
+
 # Install
 
 `$ npm install pixel-matrix`
 
 # Usage
-> ⚠️ PixelMatrix is an ES module, so make sure you're using it with a transpiler or an environment that supports them. ⚠️
+> ⚠️ PixelMatrix is an ES module, so make sure you're using it with a transpiler or an environment that supports them.
 
 ## Convert an image to greyscale
 
