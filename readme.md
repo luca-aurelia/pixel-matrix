@@ -13,7 +13,7 @@ https://pixel-matrix-demo.glitch.me/
 `$ npm install pixel-matrix`
 
 # Usage
-> ⚠️ PixelMatrix is an ES module, so make sure you're using it with a transpiler or an environment that supports them.
+> ⚠️ PixelMatrix is an ES module, so make sure you're using it with a transpiler or in [an environment that supports them](https://caniuse.com/#search=javascript%20modules).
 
 ## Convert an image to greyscale
 
