@@ -3,16 +3,17 @@
 
 # Live Demo
 
-<div class="glitch-embed-wrap" style="height: 420px; width: 100%;">
-  <iframe src="https://glitch.com/embed/#!/embed/pixel-matrix-demo?path=src/index.js&previewSize=45&sidebarCollapsed=true" alt="pixel-matrix-demo on glitch" style="height: 100%; width: 100%; border: 0;"></iframe>
-</div>
+https://pixel-matrix-demo.glitch.me/
+<br>
+<br>
+![Pixel Matrix gradient demo](https://user-images.githubusercontent.com/5033974/38850626-37c1b496-41e0-11e8-8451-06cfcaa29323.png)
 
 # Install
 
 `$ npm install pixel-matrix`
 
 # Usage
-> ⚠️ PixelMatrix is an ES module, so make sure you're using it with a transpiler or an environment that supports them.
+> ⚠️ PixelMatrix is an ES module, so make sure you're using it with a transpiler or in [an environment that supports them](https://caniuse.com/#search=javascript%20modules).
 
 ## Convert an image to greyscale
 
