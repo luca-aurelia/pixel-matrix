@@ -47,7 +47,7 @@ class PixelMatrix {
     width,
     height,
     colorProfile = COLOR_PROFILES.RGBA,
-    useExtendedValidations = true
+    debug = false
   ) {
     if (pixels == null) {
       pixels = new Uint8ClampedArray(
@@ -64,7 +64,7 @@ class PixelMatrix {
     this.height = height
     this.colorProfile = colorProfile
     this.pixels = pixels
-    this.validations = new Validations(useExtendedValidations)
+    this.validations = new Validations(debug)
   }
   get (point) {
     this.validations.shouldBePoint(point)

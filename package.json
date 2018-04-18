@@ -7,5 +7,11 @@
   "author": "Thomas Bailey (@noise_machines)",
   "license": "MIT",
   "private": false,
-  "dependencies": {}
+  "dependencies": {},
+  "scripts": {
+    "start": "http-server -c-1"
+  },
+  "devDependencies": {
+    "http-server": "^0.11.1"
+  }
 }
