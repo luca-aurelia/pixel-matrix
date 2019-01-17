@@ -1,17 +1,34 @@
 {
   "name": "@noise-machines/pixel-matrix",
   "version": "0.0.2",
-  "description": "An ES nano-module for working with pixel data.",
-  "main": "index.js",
+  "description": "An nano-library for working with pixel data.",
+  "main": "built/PixelMatrix.common.js",
+  "module": "built/PixelMatrix.module.js",
   "repository": "https://github.com/noise-machines/pixel-matrix",
   "author": "Thomas Bailey (@noise_machines)",
   "license": "MIT",
   "private": false,
-  "dependencies": {},
+  "dependencies": {
+    "@types/jest": "^23.3.12"
+  },
   "scripts": {
-    "start": "http-server -c-1"
+    "start": "http-server -c-1",
+    "build:commonjs": "tsc source/PixelMatrix.ts --target ES5 --module commonjs --outDir ./built && mv ./built/PixelMatrix.js ./built/PixelMatrix.common.js",
+    "build:es2015": "tsc source/PixelMatrix.ts --target ES5 --module ES2015 --outDir ./built && mv ./built/PixelMatrix.js ./built/PixelMatrix.module.js",
+    "build": "yarn build:commonjs && yarn build:es2015 && size-limit",
+    "test": "jest"
   },
   "devDependencies": {
-    "http-server": "^0.11.1"
-  }
+    "http-server": "^0.11.1",
+    "jest": "^23.6.0",
+    "size-limit": "^0.21.1",
+    "ts-jest": "^23.10.5",
+    "typescript": "^3.2.2"
+  },
+  "size-limit": [
+    {
+      "path": "built/PixelMatrix.common.js",
+      "limit": "2 kb"
+    }
+  ]
 }
