@@ -1,3 +1,75 @@
+// RGB and HSL conversion utilities from
+// https://stackoverflow.com/questions/2353211/hsl-to-rgb-color-conversion
+var to255 = function (x) { return Math.min(Math.floor(x * 256), 255); };
+var hue2rgb = function (p, q, t) {
+    if (t < 0)
+        t += 1;
+    if (t > 1)
+        t -= 1;
+    if (t < 1 / 6)
+        return p + (q - p) * 6 * t;
+    if (t < 1 / 2)
+        return q;
+    if (t < 2 / 3)
+        return p + (q - p) * (2 / 3 - t) * 6;
+    return p;
+};
+// RGBA is [0, 255]
+// HSLA is [0, 1]
+export var toRgba = function (pixel) {
+    var r;
+    var g;
+    var b;
+    var h = pixel.hue, s = pixel.saturation, l = pixel.lightness, a = pixel.alpha;
+    if (s === 0) {
+        r = g = b = l;
+    }
+    else {
+        var q = l < 0.5 ? l * (1 + s) : l + s - l * s;
+        var p = 2 * l - q;
+        r = hue2rgb(p, q, h + 1 / 3);
+        g = hue2rgb(p, q, h);
+        b = hue2rgb(p, q, h - 1 / 3);
+    }
+    var red = to255(r);
+    var green = to255(g);
+    var blue = to255(b);
+    var alpha = to255(a);
+    return { red: red, green: green, blue: blue, alpha: alpha };
+};
+export var toHsla = function (pixel) {
+    var r = pixel.red, g = pixel.green, b = pixel.blue, a = pixel.alpha;
+    r /= 255;
+    g /= 255;
+    b /= 255;
+    a /= 255;
+    var max = Math.max(r, g, b);
+    var min = Math.min(r, g, b);
+    var middle = (max + min) / 2;
+    var h = middle;
+    var s = middle;
+    var l = middle;
+    if (max === min) {
+        h = s = 0;
+    }
+    else {
+        var d = max - min;
+        s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+        switch (max) {
+            case r:
+                h = (g - b) / d + (g < b ? 6 : 0);
+                break;
+            case g:
+                h = (b - r) / d + 2;
+                break;
+            case b:
+                h = (r - g) / d + 4;
+                break;
+        }
+        h /= 6;
+    }
+    return { hue: h, saturation: s, lightness: s, alpha: a };
+};
 var RGBA = {
     channels: 4
 };
@@ -9,7 +81,7 @@ var EMPTY_PIXEL = {
     red: 0,
     green: 0,
     blue: 0,
-    alpha: 0
+    alpha: 255
 };
 export var vonNeumannOffsets = [
     { x: -1, y: 0 },
@@ -27,12 +99,10 @@ for (var x = -1; x <= 1; x++) {
     }
 }
 var PixelMatrix = /** @class */ (function () {
-    function PixelMatrix(width, height, colorProfile, pixels) {
-        if (colorProfile === void 0) { colorProfile = RGBA; }
+    function PixelMatrix(width, height, pixels) {
         this.width = width;
         this.height = height;
-        this.colorProfile = colorProfile;
-        var pixelsLength = width * height * colorProfile.channels;
+        var pixelsLength = width * height * this.colorProfile.channels;
         if (pixels === undefined) {
             pixels = new Uint8ClampedArray(pixelsLength);
         }
@@ -46,7 +116,7 @@ var PixelMatrix = /** @class */ (function () {
     PixelMatrix.fromCanvas = function (canvas) {
         var context = canvas.getContext('2d');
         var imageData = context.getImageData(0, 0, canvas.width, canvas.height);
-        return new PixelMatrix(canvas.width, canvas.height, COLOR_PROFILES.RGBA, imageData.data);
+        return new PixelMatrix(canvas.width, canvas.height, imageData.data);
     };
     Object.defineProperty(PixelMatrix.prototype, "pixelMatrix", {
         get: function () {
@@ -67,6 +137,13 @@ var PixelMatrix = /** @class */ (function () {
     Object.defineProperty(PixelMatrix.prototype, "channels", {
         get: function () {
             return this.colorProfile.channels;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(PixelMatrix.prototype, "colorProfile", {
+        get: function () {
+            return RGBA;
         },
         enumerable: true,
         configurable: true
@@ -101,8 +178,8 @@ var PixelMatrix = /** @class */ (function () {
         return { red: red, green: green, blue: blue, alpha: alpha };
     };
     PixelMatrix.prototype.getRandomPoint = function () {
-        var x = Math.round(Math.random() * (this.width - 1));
-        var y = Math.round(Math.random() * (this.height - 1));
+        var x = Math.floor(Math.random() * this.width);
+        var y = Math.floor(Math.random() * this.height);
         return { x: x, y: y };
     };
     PixelMatrix.prototype.getRandomPixel = function () {
@@ -123,7 +200,9 @@ var PixelMatrix = /** @class */ (function () {
     };
     PixelMatrix.prototype.getNeighboringPixels = function (point, neighborhood) {
         var _this = this;
-        return this.getNeighbors(point, neighborhood).map(function (neighbor) { return _this.get(neighbor); });
+        return this.getNeighbors(point, neighborhood).map(function (neighbor) {
+            return _this.get(neighbor);
+        });
     };
     PixelMatrix.prototype.getNeighbors = function (point, neighborhood) {
         var _this = this;
@@ -138,6 +217,9 @@ var PixelMatrix = /** @class */ (function () {
             }
         });
         return neighbors;
+    };
+    PixelMatrix.prototype.setHsla = function (point, pixel) {
+        this.set(point, toRgba(pixel));
     };
     PixelMatrix.prototype.set = function (point, pixel) {
         var red = pixel.red, green = pixel.green, blue = pixel.blue, alpha = pixel.alpha;
@@ -158,9 +240,9 @@ var PixelMatrix = /** @class */ (function () {
             var darkeningFactor = 0;
             if (Math.random() > 0.5) {
                 p = {
-                    red: newPixel.red - darkeningFactor,
-                    green: newPixel.green - darkeningFactor,
-                    blue: newPixel.blue - darkeningFactor,
+                    red: p.red - darkeningFactor,
+                    green: p.green - darkeningFactor,
+                    blue: p.blue - darkeningFactor,
                     alpha: 255
                 };
             }
@@ -190,7 +272,7 @@ var PixelMatrix = /** @class */ (function () {
         }
     };
     PixelMatrix.prototype.map = function (fn) {
-        var newPixelMatrix = new PixelMatrix(this.width, this.height, this.colorProfile);
+        var newPixelMatrix = new PixelMatrix(this.width, this.height);
         this.forEach(function (pixel, point, pixelMatrix) {
             var newPixel = fn(pixel, point, pixelMatrix);
             newPixelMatrix.set(point, newPixel);
@@ -223,7 +305,7 @@ var PixelMatrix = /** @class */ (function () {
         }
         var xRadius = (width - 1) / 2;
         var yRadius = (height - 1) / 2;
-        var windowMatrix = new PixelMatrix(width, height, this.colorProfile);
+        var windowMatrix = new PixelMatrix(width, height);
         for (var yOffset = -yRadius; yOffset <= yRadius; yOffset++) {
             for (var xOffset = -xRadius; xOffset <= xRadius; xOffset++) {
                 var x = center.x + xOffset;

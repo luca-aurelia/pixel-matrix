@@ -1,0 +1,112 @@
+{
+  "config": {
+    "title": "Pixel Matrix",
+    "description": "An nano-library for working with pixel data.",
+    "menu": [],
+    "ordering": "descending",
+    "version": "0.0.2",
+    "repository": "https://github.com/noise-machines/pixel-matrix",
+    "native": false,
+    "codeSandbox": true,
+    "themeConfig": {
+      "showPlaygroundEditor": true,
+      "linesToScrollEditor": 500
+    }
+  },
+  "entries": {
+    "documentation/api-reference.mdx": {
+      "name": "API Reference",
+      "route": "/api",
+      "id": "e9529450857c93ca9a6c91cdd69acd9c",
+      "filepath": "documentation/api-reference.mdx",
+      "link": "https://github.com/noise-machines/pixel-matrix/edit/master/documentation/api-reference.mdx",
+      "slug": "documentation-api-reference",
+      "order": 0,
+      "menu": null,
+      "headings": [
+        {
+          "depth": 1,
+          "slug": "api-reference",
+          "value": "API Reference"
+        },
+        {
+          "depth": 2,
+          "slug": "fromcanvas",
+          "value": "fromCanvas"
+        },
+        {
+          "depth": 2,
+          "slug": "countpixels",
+          "value": "countPixels"
+        },
+        {
+          "depth": 2,
+          "slug": "new-pixelmatrix",
+          "value": "new PixelMatrix"
+        },
+        {
+          "depth": 2,
+          "slug": "get",
+          "value": "get"
+        },
+        {
+          "depth": 2,
+          "slug": "getrandompoint",
+          "value": "getRandomPoint"
+        },
+        {
+          "depth": 2,
+          "slug": "getrandompixel",
+          "value": "getRandomPixel"
+        },
+        {
+          "depth": 2,
+          "slug": "getvonneumannneighboringpixels",
+          "value": "getVonNeumannNeighboringPixels"
+        },
+        {
+          "depth": 2,
+          "slug": "getvonneumannneighboringpoints",
+          "value": "getVonNeumannNeighboringPoints"
+        }
+      ]
+    },
+    "documentation/examples.mdx": {
+      "name": "Examples",
+      "route": "/examples",
+      "id": "5d3a7424d62c3809b25e77b2d7f363d0",
+      "filepath": "documentation/examples.mdx",
+      "link": "https://github.com/noise-machines/pixel-matrix/edit/master/documentation/examples.mdx",
+      "slug": "documentation-examples",
+      "order": 0,
+      "menu": null,
+      "headings": [
+        {
+          "depth": 1,
+          "slug": "examples",
+          "value": "Examples"
+        },
+        {
+          "depth": 2,
+          "slug": "drawing-a-pixel",
+          "value": "Drawing a pixel"
+        },
+        {
+          "depth": 2,
+          "slug": "drawing-a-gradient",
+          "value": "Drawing a gradient"
+        },
+        {
+          "depth": 2,
+          "slug": "load-an-image",
+          "value": "Load an image"
+        },
+        {
+          "depth": 2,
+          "slug": "animation-sampling-an-images-color-distribution",
+          "value": "Animation: Sampling an image's color distribution"
+        }
+      ]
+    }
+  }
+}

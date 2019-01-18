@@ -8,19 +8,25 @@
   "author": "Thomas Bailey (@noise_machines)",
   "license": "MIT",
   "private": false,
-  "dependencies": {
-    "@types/jest": "^23.3.12"
-  },
+  "dependencies": {},
   "scripts": {
     "start": "http-server -c-1",
-    "build:commonjs": "tsc source/PixelMatrix.ts --target ES5 --module commonjs --outDir ./built && mv ./built/PixelMatrix.js ./built/PixelMatrix.common.js",
-    "build:es2015": "tsc source/PixelMatrix.ts --target ES5 --module ES2015 --outDir ./built && mv ./built/PixelMatrix.js ./built/PixelMatrix.module.js",
+    "build:commonjs": "tsc source/PixelMatrix.ts --module commonjs && mv ./built/PixelMatrix.js ./built/PixelMatrix.common.js",
+    "build:es2015": "tsc source/PixelMatrix.ts --module ES2015 && mv ./built/PixelMatrix.js ./built/PixelMatrix.module.js",
     "build": "yarn build:commonjs && yarn build:es2015 && size-limit",
-    "test": "jest"
+    "dev": "tsc source/PixelMatrix.ts --target ES5 --module ES2015 --outDir ./built --watch",
+    "test": "jest",
+    "docz:dev": "docz dev",
+    "docz:build": "docz build"
   },
   "devDependencies": {
+    "@types/jest": "^23.3.12",
+    "docz": "^0.13.7",
+    "docz-theme-default": "^0.13.7",
     "http-server": "^0.11.1",
     "jest": "^23.6.0",
+    "react": "^16.7.0",
+    "react-dom": "^16.7.0",
     "size-limit": "^0.21.1",
     "ts-jest": "^23.10.5",
     "typescript": "^3.2.2"

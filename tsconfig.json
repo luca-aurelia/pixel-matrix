@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "target": "ES5",
+    "declaration": true,
+    "outDir": "built",
+    "strict": true,
+    "removeComments": true
+  },
+  "include": [
+    "source/**/*"
+  ]
+}
