@@ -1,6 +1,6 @@
 export const imports = {
-  'documentation/api-reference.mdx': () =>
-    import(/* webpackPrefetch: true, webpackChunkName: "documentation-api-reference" */ 'documentation/api-reference.mdx'),
-  'documentation/examples.mdx': () =>
-    import(/* webpackPrefetch: true, webpackChunkName: "documentation-examples" */ 'documentation/examples.mdx'),
+  'docs-source/api-reference.mdx': () =>
+    import(/* webpackPrefetch: true, webpackChunkName: "docs-source-api-reference" */ 'docs-source/api-reference.mdx'),
+  'docs-source/examples.mdx': () =>
+    import(/* webpackPrefetch: true, webpackChunkName: "docs-source-examples" */ 'docs-source/examples.mdx'),
 }

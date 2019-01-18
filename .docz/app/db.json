@@ -11,16 +11,18 @@
     "themeConfig": {
       "showPlaygroundEditor": true,
       "linesToScrollEditor": 500
-    }
+    },
+    "dest": "/docs",
+    "base": "/pixel-matrix/"
   },
   "entries": {
-    "documentation/api-reference.mdx": {
+    "docs-source/api-reference.mdx": {
       "name": "API Reference",
       "route": "/api",
-      "id": "e9529450857c93ca9a6c91cdd69acd9c",
-      "filepath": "documentation/api-reference.mdx",
-      "link": "https://github.com/noise-machines/pixel-matrix/edit/master/documentation/api-reference.mdx",
-      "slug": "documentation-api-reference",
+      "id": "36d94cb98e4ff62429bfbb5c570934f8",
+      "filepath": "docs-source/api-reference.mdx",
+      "link": "https://github.com/noise-machines/pixel-matrix/edit/master/docs-source/api-reference.mdx",
+      "slug": "docs-source-api-reference",
       "order": 0,
       "menu": null,
       "headings": [
@@ -71,13 +73,13 @@
         }
       ]
     },
-    "documentation/examples.mdx": {
+    "docs-source/examples.mdx": {
       "name": "Examples",
       "route": "/examples",
-      "id": "5d3a7424d62c3809b25e77b2d7f363d0",
-      "filepath": "documentation/examples.mdx",
-      "link": "https://github.com/noise-machines/pixel-matrix/edit/master/documentation/examples.mdx",
-      "slug": "documentation-examples",
+      "id": "09a73b241935fd6af68af3a5dd94f099",
+      "filepath": "docs-source/examples.mdx",
+      "link": "https://github.com/noise-machines/pixel-matrix/edit/master/docs-source/examples.mdx",
+      "slug": "docs-source-examples",
       "order": 0,
       "menu": null,
       "headings": [

@@ -1,0 +1,100 @@
+---
+name: API Reference
+route: /api
+---
+
+import { Playground } from 'docz'
+import PixelMatrix from '../built/PixelMatrix'
+import exampleImageUrl from './kawase.small.jpg'
+
+# API Reference
+
+## fromCanvas
+
+```js
+const pixelMatrix = PixelMatrix.fromCanvas(canvas)
+```
+
+Creates a pixel matrix from a canvas, taking the canvas' width, height, and pixel data.
+
+```js
+import PixelMatrix from '@noisemachines/pixel-matrix'
+
+// Create a canvas
+const canvas = document.createElement('canvas')
+canvas.width = 100
+canvas.height = 100
+
+// Fill it with coral red.
+const context = canvas.getContext('2d')
+context.fillStyle = 'rgb(222, 98, 98)'
+context.fillRect(0, 0, 100, 100)
+
+// pixelMatrix will copy over the width, height, and
+// pixel contents of canvas. So in this case, it
+// will be 100 x 100, and filled with a lovely
+// coral red.
+const pixelMatrix = PixelMatrix.fromCanvas(canvas)
+```
+
+## countPixels
+
+```js
+const width = 10
+const height = 10
+const oneHundred = new PixelMatrix(width, height).countPixels
+```
+
+The pixel matrix's width times its height.
+
+## new PixelMatrix
+
+```js
+const pixelMatrix = new PixelMatrix(
+  10, // width
+  10, // height
+  pixels // Uint8ClampedArray
+)
+```
+
+PixelMatrix constructor. The usual way to make new pixel matrices.
+
+## get
+
+```js
+const pixel = pixelMatrix.get(point)
+```
+
+`point` is a JSON object like `{ x: 0, y : 0 }`. `pixel` is a JSON object like `{ red: 255, green: 255, blue: 255, alpha: 255 }`.
+
+## getRandomPoint
+
+```js
+const point = pixelMatrix.getRandomPoint()
+```
+
+Returns a random point in the pixel matrix.
+
+## getRandomPixel
+
+```js
+const pixel = pixelMatrix.getRandomPixel()
+```
+
+Returns a random pixel from the pixel matrix.
+
+## getVonNeumannNeighboringPixels
+
+```js
+const pixels = pixelMatrix.getVonNeumannNeighboringPixels(point)
+```
+
+Returns the pixels to the north, east, south, and west of `point`. In other words, the pixels in the [von Neumann neighborhood](https://en.wikipedia.org/wiki/Von_Neumann_neighborhood) around that point.
+
+## getVonNeumannNeighboringPoints
+
+```js
+const points = pixelMatrix.getVonNeumannNeighboringPoints(point)
+```
+
+Returns the points to the north, east, south, and west of `point`. In other words, the points in the [von Neumann neighborhood](https://en.wikipedia.org/wiki/Von_Neumann_neighborhood) around that point.

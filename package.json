@@ -20,7 +20,10 @@
     "docz:build": "docz build"
   },
   "devDependencies": {
+    "@emotion/core": "^10.0.6",
+    "@emotion/styled": "^10.0.6",
     "@types/jest": "^23.3.12",
+    "babel-plugin-emotion": "^10.0.6",
     "docz": "^0.13.7",
     "docz-theme-default": "^0.13.7",
     "http-server": "^0.11.1",

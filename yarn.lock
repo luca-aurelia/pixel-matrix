@@ -756,7 +756,7 @@
     "@emotion/utils" "0.11.1"
     "@emotion/weak-memoize" "0.2.2"
 
-"@emotion/core@^10.0.5":
+"@emotion/core@^10.0.5", "@emotion/core@^10.0.6":
   version "10.0.6"
   resolved "https://registry.yarnpkg.com/@emotion/core/-/core-10.0.6.tgz#c10d7884a525728f05589b31da1c804a5d7449fa"
   integrity sha512-S5KkrodTKby1S6pKZnH8LzjzlebHvjactujfVzzu/mYYdVdKYegJuJdrAz3m9zhIeizzeQGD8xWF490ioGpUtw==
@@ -819,7 +819,7 @@
     "@emotion/utils" "0.11.1"
     object-assign "^4.1.1"
 
-"@emotion/styled@^10.0.5":
+"@emotion/styled@^10.0.5", "@emotion/styled@^10.0.6":
   version "10.0.6"
   resolved "https://registry.yarnpkg.com/@emotion/styled/-/styled-10.0.6.tgz#e6591cf7b0fd56e82a0ae7e421568229e7c6d5f9"
   integrity sha512-tJqeGmNueLcdVqQKsaXJq8fGsYg5O8E6GFxNCALHhS+BKl8kXZKn1fnPnz2iNTHuXGsxolt4uzAuj0UD/MF4NQ==
