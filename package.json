@@ -1,6 +1,6 @@
 {
   "name": "@noise-machines/pixel-matrix",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "A tiny (< 2 KB) library for playing with pixels.",
   "main": "built/PixelMatrix.common.js",
   "module": "built/PixelMatrix.module.js",
