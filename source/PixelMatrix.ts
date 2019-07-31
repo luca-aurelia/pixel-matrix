@@ -186,7 +186,7 @@ export default class PixelMatrix {
       if (pixelsLength !== pixels.length) {
         throw new Error(
           `Expected pixels to have length ${pixelsLength} (width * height * colorProfile.channels) but got ${
-            pixels.length
+          pixels.length
           } instead.`
         )
       }
@@ -288,7 +288,7 @@ export default class PixelMatrix {
     if (!this.contains(point)) {
       throw new Error(
         `Expected x and y to be less than or equal to (${this.width}, ${
-          this.height
+        this.height
         }) but was actually (${x}, ${y})`
       )
     }
@@ -364,7 +364,7 @@ export default class PixelMatrix {
     if (canvas.width !== this.width || canvas.height !== this.height) {
       throw new Error(
         `Expected canvas shape and PixelMatrix shape to be the same, but canvas shape was [${
-          canvas.width
+        canvas.width
         }, ${canvas.height}] and PixelMatrix shape was ${this.shape}.`
       )
     }

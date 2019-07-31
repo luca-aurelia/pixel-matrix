@@ -1,7 +1,7 @@
 {
   "name": "@noise-machines/pixel-matrix",
-  "version": "0.0.2",
-  "description": "An nano-library for working with pixel data.",
+  "version": "0.0.3",
+  "description": "A tiny (< 2 KB) library for playing with pixels.",
   "main": "built/PixelMatrix.common.js",
   "module": "built/PixelMatrix.module.js",
   "repository": "https://github.com/noise-machines/pixel-matrix",
@@ -11,14 +11,16 @@
   "dependencies": {},
   "scripts": {
     "start": "http-server -c-1",
-    "build:commonjs": "tsc source/PixelMatrix.ts --module commonjs && mv ./built/PixelMatrix.js ./built/PixelMatrix.common.js",
-    "build:es2015": "tsc source/PixelMatrix.ts --module ES2015 && mv ./built/PixelMatrix.js ./built/PixelMatrix.module.js",
+    "build:commonjs": "tsc --module commonjs && mv ./built/PixelMatrix.js ./built/PixelMatrix.common.js",
+    "build:es2015": "tsc --module ES2015 && mv ./built/PixelMatrix.js ./built/PixelMatrix.module.js",
     "build": "yarn build:commonjs && yarn build:es2015 && size-limit",
-    "dev": "tsc source/PixelMatrix.ts --target ES5 --module ES2015 --outDir ./built --watch",
+    "dev": "tsc --target ES5 --module ES2015 --outDir ./built --watch",
     "test": "jest",
     "docz:dev": "docz dev",
-    "docz:build": "docz build"
+    "docz:build": "docz build",
+    "np": "np"
   },
+  "types": "built/PixelMatrix.d.ts",
   "devDependencies": {
     "@emotion/core": "^10.0.6",
     "@emotion/styled": "^10.0.6",
@@ -28,6 +30,7 @@
     "docz-theme-default": "^0.13.7",
     "http-server": "^0.11.1",
     "jest": "^23.6.0",
+    "np": "^5.0.3",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
     "size-limit": "^0.21.1",

@@ -1,75 +1,39 @@
 # Pixel Matrix
-> An eloquent ES6 nano-module for working with pixel data.
+> A [tiny (< 2 KB)](https://bundlephobia.com/result?p=@noise-machines/pixel-matrix) library for playing with pixels.
 
 # Live Demo
 
-https://pixel-matrix-demo.glitch.me/
-<br>
-<br>
-![Pixel Matrix gradient demo](https://user-images.githubusercontent.com/5033974/38850626-37c1b496-41e0-11e8-8451-06cfcaa29323.png)
 
 # Install
 
-`$ npm install pixel-matrix`
+`yarn add @noise-machines/pixel-matrix`
 
 # Usage
-> ⚠️ PixelMatrix is an ES module, so make sure you're using it with a transpiler or in [an environment that supports them](https://caniuse.com/#search=javascript%20modules).
 
-## Convert an image to greyscale
+## Create a random image
 
 ```js
-import PixelMatrix from 'pixel-matrix'
+import PixelMatrix from '@noise-machines/pixel-matrix'
 
-// Read pixels from a canvas element
 const canvas = document.querySelector('canvas')
-canvas.style.imageRendering = 'pixelated'
-const pixelMatrix = PixelMatrix.fromCanvas(canvas)
 
-// Convert to greyscale
-const greyscale = pixel => {
-  const average = (pixel.red + pixel.green + pixel.blue) / 3
+// Returns a random number between 0 and 256.
+const getRandomColorChannel = () => Math.floor(Math.random() * 256)
+
+// Colors in Pixel Matrix are just JSON objects.
+const getRandomColor = () => {
   return {
-    red: average,
-    blue: average,
-    green: average,
-    alpha: pixel.alpha
-  }
-}
-const greyscalePixelMatrix = pixels.map(greyscale)
-
-// Write pixels to canvas
-greyscalePixelMatrix.putPixels(canvas)
-```
-
-## Create a gradient
-
-```js
-import PixelMatrix from './index.js'
-
-// Create canvas
-const canvas = document.createElement('canvas')
-canvas.width = 16
-canvas.height = 16
-canvas.style.imageRendering = 'pixelated'
-canvas.style.width = '500px'
-canvas.style.height = '500px'
-canvas.style.margin = 'auto'
-document.body.appendChild(canvas)
-
-// Initialize an empty 16 x 16 pixel matrix
-const emptyPixelMatrix = PixelMatrix.fromCanvas(canvas)
-
-// normalizedMap normalizes point.x and point.y to [0, 1] before passing them to
-// the callback.
-const gradient = emptyPixelMatrix.normalizedMap(point => {
-  return {
-    red: point.x * 255,
-    green: 0,
-    blue: point.y * 255,
+    red:  getRandomColorChannel(),
+    green: getRandomColorChannel(),
+    blue: getRandomColorChannel(),
     alpha: 255
   }
-})
+}
 
-// Write pixels to canvas
-gradient.putPixels(canvas)
+// Create a pixel matrix that's the same width and height as the canvas,
+// then populate it with random colors.
+const pixelMatrix = new PixelMatrix(canvas.width, canvas.height).map(getRandomColor)
+
+// Draw to the canvas.
+pixelMatrix.putPixels(canvas)
 ```

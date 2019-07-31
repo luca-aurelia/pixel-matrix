@@ -4,7 +4,7 @@ route: /api
 ---
 
 import { Playground } from 'docz'
-import PixelMatrix from '../built/PixelMatrix'
+import PixelMatrix from '../built/PixelMatrix.module.js'
 import exampleImageUrl from './kawase.small.jpg'
 
 # API Reference
@@ -15,7 +15,7 @@ import exampleImageUrl from './kawase.small.jpg'
 const pixelMatrix = PixelMatrix.fromCanvas(canvas)
 ```
 
-Creates a pixel matrix from a canvas, taking the canvas' width, height, and pixel data.
+Creates a pixel matrix from a canvas, copying the canvas' width, height, and pixel data.
 
 ```js
 import PixelMatrix from '@noisemachines/pixel-matrix'
