@@ -2,8 +2,9 @@
   "name": "@noise-machines/pixel-matrix",
   "version": "0.0.4",
   "description": "A tiny (< 2 KB) library for playing with pixels.",
-  "main": "built/PixelMatrix.common.js",
-  "module": "built/PixelMatrix.module.js",
+  "main": "dist/PixelMatrix.module.js",
+  "browser": "dist/PixelMatrix.umd.js",
+  "module": "dist/PixelMatrix.module.js",
   "repository": "https://github.com/noise-machines/pixel-matrix",
   "author": "Thomas Bailey (@noise_machines)",
   "license": "MIT",
@@ -11,25 +12,19 @@
   "dependencies": {},
   "scripts": {
     "start": "http-server -c-1",
-    "build:commonjs": "tsc --module commonjs && mv ./built/PixelMatrix.js ./built/PixelMatrix.common.js",
-    "build:es2015": "tsc --module ES2015 && mv ./built/PixelMatrix.js ./built/PixelMatrix.module.js",
-    "build": "yarn build:commonjs && yarn build:es2015 && size-limit",
-    "dev": "tsc --target ES5 --module ES2015 --outDir ./built --watch",
-    "test": "jest",
-    "np": "np"
+    "publishPrerelease": "gh release create --prerelease --notes '' --title ''",
+    "publish": "gh release create",
+    "build": "sh scripts/build.sh"
   },
-  "types": "built/PixelMatrix.d.ts",
   "devDependencies": {
-    "benchmark": "^2.1.4",
-    "http-server": "^0.11.1",
-    "jest": "^23.6.0",
-    "lodash": "^4.17.20",
-    "np": "^5.0.3",
+    "@babel/cli": "^7.12.8",
+    "@babel/core": "^7.12.9",
+    "@babel/plugin-transform-modules-umd": "^7.12.1",
     "size-limit": "^0.21.1"
   },
   "size-limit": [
     {
-      "path": "built/PixelMatrix.common.js",
+      "path": "dist/PixelMatrix.common.js",
       "limit": "2 kb"
     }
   ]
