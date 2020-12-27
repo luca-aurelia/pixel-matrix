@@ -1,6 +1,6 @@
 {
   "name": "@noise-machines/pixel-matrix",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "A tiny (< 2 KB) library for playing with pixels.",
   "main": "dist/PixelMatrix.module.js",
   "browser": "dist/PixelMatrix.umd.js",
@@ -13,13 +13,14 @@
   "scripts": {
     "start": "http-server -c-1",
     "publishPrerelease": "gh release create --prerelease --notes '' --title ''",
-    "publish": "gh release create",
+    "release": "yarn build && np",
     "build": "sh scripts/build.sh"
   },
   "devDependencies": {
     "@babel/cli": "^7.12.8",
     "@babel/core": "^7.12.9",
     "@babel/plugin-transform-modules-umd": "^7.12.1",
+    "np": "^7.1.0",
     "size-limit": "^0.21.1"
   },
   "size-limit": [
