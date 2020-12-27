@@ -16,26 +16,16 @@
     "build": "yarn build:commonjs && yarn build:es2015 && size-limit",
     "dev": "tsc --target ES5 --module ES2015 --outDir ./built --watch",
     "test": "jest",
-    "docz:dev": "docz dev",
-    "docz:build": "docz build",
     "np": "np"
   },
   "types": "built/PixelMatrix.d.ts",
   "devDependencies": {
-    "@emotion/core": "^10.0.6",
-    "@emotion/styled": "^10.0.6",
-    "@types/jest": "^23.3.12",
-    "babel-plugin-emotion": "^10.0.6",
-    "docz": "^0.13.7",
-    "docz-theme-default": "^0.13.7",
+    "benchmark": "^2.1.4",
     "http-server": "^0.11.1",
     "jest": "^23.6.0",
+    "lodash": "^4.17.20",
     "np": "^5.0.3",
-    "react": "^16.7.0",
-    "react-dom": "^16.7.0",
-    "size-limit": "^0.21.1",
-    "ts-jest": "^23.10.5",
-    "typescript": "^3.2.2"
+    "size-limit": "^0.21.1"
   },
   "size-limit": [
     {
